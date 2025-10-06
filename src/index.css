@@ -1,0 +1,14 @@
+@import "tailwindcss";
+
+
+@layer base {
+    :root {
+        --color-background: #F3F4F6;
+        --color-text: #111827;
+    }
+
+    .dark {
+        --color-background: #1F2937;
+        --color-text: #F9FAFB;
+    }
+}
