@@ -1,26 +1,82 @@
-import { SearchCode } from 'lucide-react';
+/* eslint-disable no-unused-vars */
+import { Bookmark, Search, SearchCode, Settings, UserPlus } from 'lucide-react';
+import { NavLink } from 'react-router-dom';
+import ThemeToggle from './../common/ThemeToggle';
 
+const navItems = [
+  { label: 'Search', to: '/search', Icon: Search },
+  { label: 'Saved Profiles', to: '/saved-profiles', Icon: UserPlus },
+  { label: 'Saved Searches', to: '/saved-searches', Icon: Bookmark },
+];
 
 const NavBar = () => {
   return (
-    <header className="bg-background dark:bg-background/80 shadow-sm dark:shadow-lg z-[100] sticky w-full mx-auto border-b border-border/60 dark:border-border/30">
-        <nav className='max-w-4xl mx-auto my-0 px-4 py-3 md:py-4 flex items-center justify-between'>
-            <div className='container flex items-center gap-3'>
-                <div className='inline-flex items-center justify-center cursor-pointer transition-colors hover:text-primary'>
-                    <SearchCode className='h-5 w-5 md:h-6 md:w-6' />
-                </div>
-                <div className='flex flex-col leading-tight text-left'>
-                    <h1 className=' text-lg font-poppins font-bold text-primary tracking-tight leading-none'>
-                        <span>Dev</span>Finder
-                    </h1>
-                    <p className='text-gray-500 text-sm'>Find your Developer</p>
-                </div>
-            </div>
+    <header className="sticky top-0 z-[100] w-full bg-background/90 dark:bg-background/80 backdrop-blur border-b border-border/60 dark:border-border/30 shadow-sm">
+      <div className="max-w-4xl mx-auto px-4 py-3 md:py-4 flex items-center justify-between gap-6">
+        {/* Brand */}
+        <NavLink to="/" className="inline-flex items-center gap-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring rounded-md">
+          <SearchCode className="h-6 w-6 text-primary" />
+          <div className="flex flex-col leading-tight text-left">
+            <h1 className="text-lg md:text-xl font-poppins font-bold tracking-tight leading-none">
+              <span className="text-primary">Dev</span>
+              <span className="text-foreground">Finder</span>
+            </h1>
+            <p className="mt-0.5 text-xs md:text-sm text-muted-foreground">
+              Find your Developer
+            </p>
+          </div>
+        </NavLink>
 
-
+        {/* Desktop Nav */}
+        <nav className="hidden md:flex items-center gap-4" aria-label="Main navigation">
+          {navItems.map(({ label, to, Icon }) => (
+            <NavLink
+              key={to}
+              to={to}
+              className={({ isActive }) =>
+                [
+                  'flex items-center gap-2 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200',
+                  'hover:text-foreground hover:bg-muted/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring',
+                isActive 
+                    ? 'bg-secondary hover:bg-secondary text-foreground font-semibold' 
+                    : 'text-muted-foreground'
+                ].join(' ')
+              }
+            >
+              <Icon className="h-4 w-4 text-primary/80" />
+              <span>{label}</span>
+            </NavLink>
+          ))}
         </nav>
-    </header>
-  )
-}
 
-export default NavBar
+        {/* Actions */}
+        <div className="flex items-center gap-3">
+          <ThemeToggle />
+          <button
+            type="button"
+            aria-label="Open settings"
+            className="hidden md:block p-2 rounded-md text-muted-foreground hover:text-foreground hover:bg-muted/60 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+          >
+            <Settings className="h-5 w-5 md:h-6 md:w-6" />
+          </button>
+
+        {/* Mobile Navigation */}
+          <div className="md:hidden">
+            {/* Mobile menu button */}
+            <button
+              type="button"
+              aria-label="Open menu"
+              className="p-2 rounded-md text-muted-foreground hover:text-foreground hover:bg-muted/60 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+            >
+              <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16"></path>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </header>
+  );
+};
+
+export default NavBar;
