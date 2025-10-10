@@ -9,7 +9,7 @@ const Layout = () => {
     <div className="min-h-screen bg-background flex flex-col">    
         <NavBar />
         
-        <main className="flex-grow">
+        <main className="flex-1 relative py-4 sm:py-6 md:py-8">
         <Outlet />
         </main>
 
