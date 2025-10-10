@@ -1,0 +1,12 @@
+<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background circle -->
+  <circle cx="16" cy="16" r="16" fill="#4361EE" />
+  
+  <!-- Code brackets -->
+  <path d="M12 9L7 16L12 23" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+  <path d="M20 9L25 16L20 23" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+  
+  <!-- Search magnifying glass -->
+  <circle cx="16" cy="16" r="6" stroke="white" stroke-width="2" />
+  <path d="M20 20L24 24" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+</svg>
