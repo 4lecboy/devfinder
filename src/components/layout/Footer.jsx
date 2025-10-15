@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import { GithubIcon, Globe, LinkedinIcon, TwitterIcon } from "lucide-react"
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 
 const Footer = () => {
@@ -21,9 +21,9 @@ const Footer = () => {
           </div>
           <div className="flex items-center space-x-5 text-muted-foreground">
             {linkItems.map(({ url, Icon }) => (
-              <NavLink key={url} to={url} target="_blank" rel="noopener noreferrer" className="hover:text-primary h-4 w-4">
+              <Link key={url} to={url} target="_blank" rel="noopener noreferrer" className="hover:text-primary h-4 w-4">
                 <Icon />
-              </NavLink>
+              </Link>
             ))}
           </div>
         </div>

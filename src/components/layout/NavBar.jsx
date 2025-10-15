@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 // 
 import { Bookmark, Search, SearchCode, Settings, UserPlus } from 'lucide-react';
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router';
 import ThemeToggle from './../common/ThemeToggle';
 
 const navItems = [
@@ -15,7 +15,7 @@ const NavBar = () => {
     <header className="sticky top-0 z-[100] w-full bg-background/90 dark:bg-background/80 backdrop-blur border-b border-border/60 dark:border-border/30 shadow-sm">
       <div className="max-w-4xl mx-auto px-4 py-3 md:py-4 flex items-center justify-between gap-6">
         {/* Brand */}
-        <NavLink to="/" className="inline-flex items-center gap-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring rounded-md">
+        <Link to="/" className="inline-flex items-center gap-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring rounded-md">
           <SearchCode className="h-8 w-8 text-primary" />
           <div className="flex flex-col leading-tight text-left">
             <h1 className="text-xl md:text-2xl font-poppins font-bold tracking-tight leading-none">
@@ -26,12 +26,12 @@ const NavBar = () => {
               Find your Developer
             </p>
           </div>
-        </NavLink>
+        </Link>
 
         {/* Desktop Nav */}
         <nav className="hidden md:flex items-center gap-4" aria-label="Main navigation">
           {navItems.map(({ label, to, Icon }) => (
-            <NavLink
+            <Link
               key={to}
               to={to}
               className={({ isActive }) =>
@@ -46,7 +46,7 @@ const NavBar = () => {
             >
               <Icon className="h-5 w-5 text-primary/80" />
               <span>{label}</span>
-            </NavLink>
+            </Link>
           ))}
         </nav>
 
