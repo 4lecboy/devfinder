@@ -8,7 +8,7 @@ export const GithubService = {
     try {
       const response = await axios.get(`${BASE_URL}${username}`, {
         headers: {
-          Authorization: `token ${import.meta.env.GITHUB_TOKEN || ""}`,
+          Authorization: `token ${import.meta.env.VITE_GITHUB_TOKEN || ""}`,
         },
       });
       return response.data;
