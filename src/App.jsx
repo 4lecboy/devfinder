@@ -1,7 +1,7 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import HomePage from './pages/HomePage';
 import { NotFound } from './pages/NotFound';
-import SavedProfilesPage from './pages/SevedProfilesPage';
+import SavedProfilesPage from './pages/SavedProfilesPage';
 import SearchPage from './pages/SearchPage';
 import SavedSearchesPage from './pages/SavedSearchesPage';
 import SettingsPage from './pages/SettingsPage';
