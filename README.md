@@ -1,16 +1,112 @@
-# React + Vite
+# DevFinder
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Discover GitHub users with a clean, fast React + Vite app. Search by username, view profile details, and jump to followers, following, and repositories.
 
-Currently, two official plugins are available:
+## Features
+- GitHub user search with loading and error states
+- Profile card: avatar, name, username, bio, location
+- Quick links: followers, following, repositories
+- Copy-to-clipboard for username and email
+- Dark/light theme toggle (persisted in localStorage)
+- Responsive UI built with Tailwind CSS v4
+- Client-side routing with a shared layout
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Tech Stack
+- React 19 + Vite 7
+- React Router 7
+- Tailwind CSS v4 (@tailwindcss/vite)
+- Axios
+- Lucide Icons
 
-## React Compiler
+## Project Structure
+```
+.env.local
+.gitignore
+eslint.config.js
+index.html
+package.json
+vite.config.js
+public/
+src/
+  App.jsx
+  index.css
+  main.jsx
+  components/
+    common/ThemeToggle.jsx
+    layout/{Footer.jsx,Layout.jsx,NavBar.jsx}
+    search/SearchForm.jsx
+    ui/{Button.jsx,Card.jsx,Spinner.jsx}
+    user/{UserProfileCard.jsx,UserSocialLinks.jsx,UserStats.jsx}
+  hooks/useGithubUser.js
+  pages/{HomePage.jsx,NotFound.jsx,SavedProfilesPage.jsx,SavedSearchesPage.jsx,SearchPage.jsx,SettingsPage.jsx}
+  services/github.js
+  utils/api.js
+```
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Getting Started
 
-## Expanding the ESLint configuration
+Prerequisites:
+- Node.js 18+ and npm
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Install and run:
+```sh
+npm install
+npm run dev
+```
+Build and preview:
+```sh
+npm run build
+npm run preview
+```
+
+## Environment Variables
+Create a `.env.local` in the project root:
+```
+VITE_GITHUB_TOKEN=your_github_token_here   # optional but recommended
+```
+Notes:
+- Unauthenticated GitHub API calls are rate-limited. Supplying a token increases limits.
+- The token is sent as a bearer token in [`GithubService.getUser`](src/services/github.js).
+
+## Available Scripts
+- `npm run dev` — start dev server
+- `npm run build` — production build
+- `npm run preview` — preview production build
+- `npm run lint` — run ESLint
+
+## Key Files
+- Routing and layout:
+  - [`App`](src/App.jsx)
+  - [`Layout`](src/components/layout/Layout.jsx)
+  - [`NavBar`](src/components/layout/NavBar.jsx), [`Footer`](src/components/layout/Footer.jsx)
+
+- Pages:
+  - [`HomePage`](src/pages/HomePage.jsx)
+  - [`SearchPage`](src/pages/SearchPage.jsx)
+  - [`SavedProfilesPage`](src/pages/SavedProfilesPage.jsx)
+  - [`SavedSearchesPage`](src/pages/SavedSearchesPage.jsx)
+  - [`SettingsPage`](src/pages/SettingsPage.jsx)
+  - [`NotFound`](src/pages/NotFound.jsx)
+
+- Search flow:
+  - Hook: [`useGithubUser`](src/hooks/useGithubUser.js)
+  - API wrapper: [`fetchGitHubUser`](src/utils/api.js)
+  - Service: [`GithubService.getUser`](src/services/github.js)
+  - UI: [`SearchForm`](src/components/search/SearchForm.jsx), [`UserProfileCard`](src/components/user/UserProfileCard.jsx), [`UserStats`](src/components/user/UserStats.jsx), [`UserSocialLinks`](src/components/user/UserSocialLinks.jsx)
+
+- UI primitives:
+  - [`Button`](src/components/ui/Button.jsx), [`Card`](src/components/ui/Card.jsx), [`Spinner`](src/components/ui/Spinner.jsx)
+  - Theme: [`ThemeToggle`](src/components/common/ThemeToggle.jsx)
+
+- Styling and tooling:
+  - Tailwind setup: [src/index.css](src/index.css)
+  - Vite config and alias @ -> src: [vite.config.js](vite.config.js)
+  - App entry: [index.html](index.html), [src/main.jsx](src/main.jsx)
+  - Package scripts: [package.json](package.json)
+
+## Notes
+- External links open in new tabs where applicable.
+- The path alias `@` resolves to `src/` as configured in [vite.config.js](vite.config.js).
+
+## License
+MIT

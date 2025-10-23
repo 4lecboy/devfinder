@@ -17,7 +17,10 @@ const Footer = () => {
         <div className="flex flex-col sm:flex-row justify-between items-center gap-4 sm:gap-6">
           <div className="text-sm text-muted-foreground flex items-center gap-1">
             <p>© 2025 DevFinder by</p> 
-            <a href="https://newelle-dev.vercel.app" target="_blank" rel="noopener noreferrer">@NewelleDev</a>
+            <a href="https://newelle-dev.vercel.app" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="font-medium text-primary/80 hover:text-primary transition-colors">@NewelleDev</a>
           </div>
           <div className="flex items-center space-x-5 text-muted-foreground">
             {linkItems.map(({ url, Icon }) => (

@@ -1,13 +1,11 @@
 /* eslint-disable no-unused-vars */
 // 
-import { Bookmark, Search, SearchCode, Settings, UserPlus } from 'lucide-react';
+import { Search, SearchCode } from 'lucide-react';
 import { NavLink } from 'react-router-dom';
 import ThemeToggle from './../common/ThemeToggle';
 
 const navItems = [
   { label: 'Search', to: '/search', Icon: Search },
-  { label: 'Saved Profiles', to: '/saved-profiles', Icon: UserPlus },
-  { label: 'Saved Searches', to: '/saved-searches', Icon: Bookmark },
 ];
 
 const NavBar = () => {
@@ -29,7 +27,7 @@ const NavBar = () => {
         </NavLink>
 
         {/* Desktop Nav */}
-        <nav className="hidden md:flex items-center gap-4" aria-label="Main navigation">
+        <nav className="flex items-center gap-4" aria-label="Main navigation">
           {navItems.map(({ label, to, Icon }) => (
             <NavLink
               key={to}
@@ -53,6 +51,8 @@ const NavBar = () => {
         {/* Actions */}
         <div className="flex items-center gap-3">
           <ThemeToggle />
+          {/* Temporarily removed settings button */}
+          {/** 
           <button
             type="button"
             aria-label="Open settings"
@@ -60,10 +60,12 @@ const NavBar = () => {
           >
             <Settings className="h-5 w-5 md:h-6 md:w-6" />
           </button>
+          */}
 
-        {/* Mobile Navigation */}
+          {/* Mobile Navigation */}
+          {/** Temporarily removed mobile menu button */}
+          {/**
           <div className="md:hidden">
-            {/* Mobile menu button */}
             <button
               type="button"
               aria-label="Open menu"
@@ -73,7 +75,7 @@ const NavBar = () => {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16"></path>
               </svg>
             </button>
-          </div>
+          </div>*/}
         </div>
       </div>
     </header>

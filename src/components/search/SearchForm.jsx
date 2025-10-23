@@ -3,7 +3,7 @@ import Button from '../ui/Button';
 
 const SearchForm = ({ username, setUsername, handleSearch, isLoading }) => {
   return (
-    <div className='bg-card rounded-lg border shadow-sm'>
+    <div className='bg-card rounded-lg border shadow-sm'>     
       <form onSubmit={handleSearch} className='divide-y p-6'>
         <div className='space-y-4'>
           <div className='flex items-center gap-2'>
@@ -31,15 +31,15 @@ const SearchForm = ({ username, setUsername, handleSearch, isLoading }) => {
               isLoading={isLoading}
               loadingText="Searching..."
               showLoadingText={true}
-              className="w-full md:w-auto"
+              classNName="w-full md:w-auto"
             >
-              Search Users
+              Search User
             </Button>
-          </div>
+          </div> 
         </div>
-      </form>
+      </form> 
     </div>
-  );
+  ); 
 };
-
+ 
 export default SearchForm;
